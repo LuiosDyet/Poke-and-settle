@@ -1,0 +1,25 @@
+body {
+    background-image: url('/img/color-g67f385274_1280.png');
+    background-size: cover;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.cards-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.no-overflow {
+    overflow: hidden;
+    flex-wrap: nowrap;
+}
+
+.hidden {
+}
+
+.hideNext + .hidden {
+    visibility: hidden;
+}
