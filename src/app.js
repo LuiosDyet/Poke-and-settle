@@ -1,3 +1,4 @@
+let { port } = require('../config');
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -21,7 +22,7 @@ app.use(
     })
 );
 
-const port = process.env.PORT || 80;
+port = process.env.PORT || 80;
 
 app.listen(port);
 
