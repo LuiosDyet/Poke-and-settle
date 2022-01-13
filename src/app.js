@@ -176,5 +176,5 @@ app.get('/endgame', (req, res) => {
     }
     let log = req.session.log;
     req.session.destroy();
-    res.render('endgame', { winner, log });
+    res.render('end-game', { winner, log });
 });
