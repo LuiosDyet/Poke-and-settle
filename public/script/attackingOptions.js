@@ -9,8 +9,6 @@ function attacked() {
             } else {
                 this.classList.add('hideNext');
             }
-
-            console.log(this.value);
         });
     }
 }

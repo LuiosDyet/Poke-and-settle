@@ -7,6 +7,10 @@ body {
     height: 100%;
 }
 
+.max-w-1200 {
+    max-width: 1200px;
+}
+
 .cards-container {
     max-width: 600px;
     margin: auto;
@@ -18,8 +22,9 @@ body {
 }
 
 .hidden {
+    visibility: hidden;
 }
 
-.hideNext + .hidden {
+.hideNext + .possibly-hidden {
     visibility: hidden;
 }
