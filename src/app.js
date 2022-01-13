@@ -21,7 +21,9 @@ app.use(
     })
 );
 
-app.listen(3001);
+const port = process.env.PORT || 80;
+
+app.listen(port);
 
 app.get('/', async (req, res) => {
     function capitalizeFirstLetter(string) {
