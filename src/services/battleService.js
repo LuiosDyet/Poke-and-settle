@@ -57,10 +57,11 @@ module.exports = {
         defenderPokemon,
         dPIsDefending,
         dmgDefended,
-        hpRemaining
+        hpRemaining,
+        log
     ) {
         //create log
-        const log = [];
+
         log.push(
             `${attackerPokemon.name} atacó a ${defenderPokemon.name} por ${
                 attackerPokemon.attack
@@ -107,7 +108,7 @@ module.exports = {
         const player1PokesAtt = player1Pokes;
         const player2PokesAtt = player2Pokes;
         const defending = this.setDefenders(battle);
-        let log;
+        let log = [];
         Object.entries(battle).forEach(([fight, action]) => {
             if (action[1] == 'attack') {
                 [attackerPokemon, defenderPokemon, callOfAttack] =
@@ -133,7 +134,8 @@ module.exports = {
                     defenderPokemon,
                     dPIsDefending,
                     dmgDefended,
-                    hpRemaining
+                    hpRemaining,
+                    log
                 );
                 [player1Pokes, player2Pokes] = this.recreateTeams(
                     fight,

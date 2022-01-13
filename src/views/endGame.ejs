@@ -12,9 +12,20 @@
 </head>
 
 <body class="container-fluid">
-    <h1 class="text-white text-center fw-bolder">Poke and fight</h1>
-    <h2><%= winner %> </h2>
-    <a href="/">Jugar de nuevo</a>
+    <h1 class="text-white text-center fw-bolder">Poke and settle</h1>
+    <div class="col-12 my-5">
+        <% if(log) {%>
+        <ul class="list-group list-group-flush rounded-1 m-auto">
+            <% log.forEach(event=>{ %>
+            <li class="col-md-4 align-self-center list-group-item list-group-item-warning mb-1"><%= event %> </li>
+            <% }) %>
+        </ul>
+
+        <% } %>
+
+    </div>
+    <h2 class="text-white text-center fw-light"><%= winner %> </h2>
+    <div class="text-white text-center fw-light"><a href="/">Jugar de nuevo</a></div>
 
     <script src="/script/attackingOptions.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

@@ -13,23 +13,20 @@
 
 <body class="container-fluid max-w-1200">
     <h1 class="text-white text-center fw-bolder">Poke and settle</h1>
-    <h2 id="instructions" class=" text-white text-center fw-light">Jugador 1 elije sus acciones
-        <span class=" d-block" style="font-size: 16px;">(jugador 2, no espies)</span>
-    </h2>
     <form action="/fight" method="post">
         <div class="d-flex justify-content-center">
-            <button class="btn btn-success px-5 mt-4 fs-2 d-block" type="button" id="pass-player-2-btn">Pasar al
-                jugador
-                2</button>
-            <button class="btn btn-warning px-5 mt-4 fs-2 d-none" type="button" id="prepare-fight-btn">Prepararse
-                para
-                pelear</button>
-            <button class="btn btn-danger px-5 mt-4 fs-2 d-none" type="submit" id="fight-btn">Pelear</button>
+
+            <button class="btn btn-danger px-5 mt-4 fs-2 hidden" type="submit" id="fight-btn">Pelear</button>
         </div>
         <div class="row">
 
             <div class="col-lg-5 col-12">
-                <h2 class="text-white fw-bold mt-md-0 mt-5">Jugador 1</h2>
+                <div class="d-flex mt-md-0 mt-5 ">
+                    <h2 class="col-4 text-white fw-bold m-1">Jugador 1</h2>
+                    <button class="col-8  btn btn-success fw-light m-1" id="instruction-player-1" type="button">Elegí
+                        las
+                        acciones y clickeá acá</button>
+                </div>
                 <div class="d-flex">
                     <% for(let i = 0; i < player1Pokes.length; i++){ %>
                     <div class="col-4 card h-100 justify-content-between p-1 m-1 bg-dark bg-gradient text-white">
@@ -58,8 +55,8 @@
                                 <option value="defend">
                                     Defender
                                 </option>
-                                <option value="heal">
-                                    Curarse</option>
+                                <option value="evolve">
+                                    Evolucionar</option>
                             </select>
                             <select class="form-select bg-dark text-white possibly-hidden" aria-label="Default select"
                                 name="<%= i * 2 %>" id="<%= player1Pokes[i].id %>">
@@ -87,7 +84,11 @@
 
             </div>
             <div class="col-lg-5 col-12 ">
-                <h2 class="text-white fw-bold text-lg-end mt-md-0 mt-5">Jugador 2</h2>
+                <div class="d-flex mt-md-0 mt-5 ">
+                    <button class="col-8  btn btn-warning fw-light m-1 disabled" id="instruction-player-2"
+                        type="button">Esperá al jugador 1, no espies</button>
+                    <h2 class="col-4 text-white fw-bold m-1">Jugador 2</h2>
+                </div>
                 <div class="d-flex justify-content-lg-end">
                     <% for(let i = 0; i < player2Pokes.length; i++) { %>
                     <div class="col-4 card h-100 justify-content-between p-1 m-1 bg-dark bg-gradient text-white">
@@ -116,7 +117,7 @@
                                     Atacar</option>
                                 <option value="defend">
                                     Defender</option>
-                                <option value="heal">Curarse
+                                <option value="evolve">Evolucionar
                                 </option>
                             </select>
                             <select class="form-select bg-dark text-white possibly-hidden" aria-label="Default select"

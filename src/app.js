@@ -74,8 +74,12 @@ app.get('/', async (req, res) => {
                 }
             } while (pokeArray.length < 12 || i >= randomArray.length);
             req.session.pokeArray = pokeArray;
+            console.log(`pokeArray`, pokeArray);
         } else {
             pokeArray = req.session.pokeArray;
+            pokeArray.sort(function () {
+                return Math.random() - 0.5;
+            });
         }
         if (!req.session.currentPlayer) {
             req.session.currentPlayer = 1;
@@ -168,6 +172,7 @@ app.get('/endgame', (req, res) => {
     } else {
         winner = '¡Es un empate!';
     }
+    let log = req.session.log;
     req.session.destroy();
-    res.render('endgame', { winner });
+    res.render('endgame', { winner, log });
 });

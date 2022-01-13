@@ -1,6 +1,24 @@
 function changeToPlayer2() {
-    document.getElementById('instructions').innerText =
-        'Jugador 2 elije sus acciones';
+    document.getElementById('instruction-player-1').innerText =
+        'Esperá que el jugador 2 elija sus acciones';
+    document
+        .getElementById('instruction-player-1')
+        .classList.remove('btn-success');
+    document.getElementById('instruction-player-1').classList.add('disabled');
+    document
+        .getElementById('instruction-player-1')
+        .classList.add('btn-warning');
+    document.getElementById('instruction-player-2').innerText =
+        'Elegí las acciones y clickea acá';
+    document
+        .getElementById('instruction-player-2')
+        .classList.remove('disabled');
+    document
+        .getElementById('instruction-player-2')
+        .classList.remove('btn-warning');
+    document
+        .getElementById('instruction-player-2')
+        .classList.add('btn-success');
     let player1Options = document.getElementsByClassName('player1-options');
     for (let options of player1Options) {
         options.classList.add('hidden');
@@ -9,28 +27,30 @@ function changeToPlayer2() {
     for (let options of player2Options) {
         options.classList.remove('hidden');
     }
-    document.getElementById('prepare-fight-btn').classList.remove('d-none');
-    document.getElementById('prepare-fight-btn').classList.add('d-block');
-    document.getElementById('pass-player-2-btn').classList.add('d-none');
 }
 
 function prepareToFight() {
-    document.getElementById('instructions').innerText = 'Listos para pelear';
+    document.getElementById('instruction-player-1').innerText =
+        'Listo para pelear';
+    document.getElementById('instruction-player-2').innerText =
+        'Listo para pelear';
+    document.getElementById('instruction-player-2').classList.add('disabled');
+    document
+        .getElementById('instruction-player-2')
+        .classList.add('btn-warning');
     let player2Options = document.getElementsByClassName('player2-options');
     for (let options of player2Options) {
         options.classList.add('hidden');
     }
-    document.getElementById('fight-btn').classList.remove('d-none');
-    document.getElementById('fight-btn').classList.add('d-block');
-    document.getElementById('prepare-fight-btn').classList.add('d-none');
+    document.getElementById('fight-btn').classList.remove('hidden');
 }
 
 function setEventListeners() {
     document
-        .getElementById('pass-player-2-btn')
+        .getElementById('instruction-player-1')
         .addEventListener('click', changeToPlayer2);
     document
-        .getElementById('prepare-fight-btn')
+        .getElementById('instruction-player-2')
         .addEventListener('click', prepareToFight);
 }
 
