@@ -52,7 +52,7 @@ module.exports = {
                     name: capitalizeFirstLetter(p.name),
                     hp: p.stats[0].base_stat,
                     attack: p.stats[1].base_stat,
-                    defense: p.stats[2].base_stat,
+                    defense: Math.round(p.stats[2].base_stat / 2),
                 };
                 pokeArray.push(pokemon);
             }

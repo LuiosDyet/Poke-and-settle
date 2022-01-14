@@ -45,7 +45,7 @@ module.exports = {
         //calculate dmg and hp
         const dPIsDefending = defending.includes(defenderPokemon.id);
         const dmgDefended = dPIsDefending
-            ? ((defenderPokemon.defense / 2) * attackerPokemon.attack) / 100
+            ? (defenderPokemon.defense * attackerPokemon.attack) / 100
             : 0;
         const dmgDone = attackerPokemon.attack - dmgDefended;
         const hpRemaining = defenderPokemon.hp - dmgDone;
@@ -67,9 +67,7 @@ module.exports = {
                 attackerPokemon.attack
             } puntos de daño,${
                 dPIsDefending
-                    ? ` ${defenderPokemon.name} defendió un  ${
-                          defenderPokemon.defense / 2
-                      }% o ${dmgDefended} vida,`
+                    ? ` ${defenderPokemon.name} defendió un  ${defenderPokemon.defense}% o ${dmgDefended} vida,`
                     : ''
             } ${defenderPokemon.name} ${
                 hpRemaining <= 0

@@ -1,3 +1,37 @@
+* {
+    font-family: 'Mukta', sans-serif;
+    /* font-size: small; */
+}
+
+@font-face {
+    font-family: 'Pokemon Solid';
+    src: url('/fonts/PokemonSolidNormal.woff2') format('woff2'),
+        url('/fonts/PokemonSolidNormal.woff') format('woff'),
+        url('/fonts/PokemonSolidNormal.ttf') format('truetype'),
+        url('/fonts/PokemonSolidNormal.svg#PokemonSolidNormal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pokemon Hollow';
+    src: url('/fonts/PokemonHollowNormal.woff2') format('woff2'),
+        url('/fonts/PokemonHollowNormal.woff') format('woff'),
+        url('/fonts/PokemonHollowNormal.ttf') format('truetype'),
+        url('/fonts/PokemonHollowNormal.svg#PokemonHollowNormal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.pokemonSolidFont {
+    font-family: 'Pokemon Solid';
+}
+.pokemonHollowFont {
+    font-family: 'Pokemon Hollow';
+}
+
 body {
     background-image: url('/img/color-g67f385274_1280.png');
     background-size: cover;
