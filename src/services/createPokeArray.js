@@ -37,14 +37,24 @@ module.exports = {
             Math.floor(Math.random() * pokeCount)
         );
     },
-    populateArray: async function (randomArray) {
-        pokeArray = [];
+    populateArray: async function (randomArray, pokeArray) {
         let i = 0;
-        do {
-            const data = await fetch(
-                `https://pokeapi.co/api/v2/pokemon/${randomArray[i]}`
+        const promisesArray = [];
+        for (
+            let i = 0;
+            i < 12 - pokeArray.length || i >= randomArray.length;
+            i++
+        ) {
+            promisesArray.push(
+                fetch(`https://pokeapi.co/api/v2/pokemon/${randomArray[i]}`)
             );
-            i++;
+        }
+
+        const dataArray = await Promise.all(promisesArray);
+        return this.convertArrayData(dataArray, pokeArray, randomArray);
+    },
+    convertArrayData: async function (dataArray, pokeArray, randomArray) {
+        for (let data of dataArray) {
             if (data.status === 200) {
                 const p = await data.json();
                 const pokemon = {
@@ -56,7 +66,12 @@ module.exports = {
                 };
                 pokeArray.push(pokemon);
             }
-        } while (pokeArray.length < 12 || i >= randomArray.length);
+        }
+        for (let data of dataArray) {
+            if (data.status === 404) {
+                return this.populateArray(randomArray, pokeArray);
+            }
+        }
         return pokeArray;
     },
     shuffleArray: function (req) {
@@ -74,13 +89,13 @@ module.exports = {
         return currentPlayer;
     },
     getPokeArray: async function (req) {
-        let pokeArray;
+        let pokeArray = [];
         this.useLocalStorage;
 
         if (!req.session.pokeArray) {
             const pokeCount = await this.totalPokemons();
             const randomArray = this.randomArray(pokeCount);
-            pokeArray = await this.populateArray(randomArray);
+            pokeArray = await this.populateArray(randomArray, pokeArray);
             req.session.pokeArray = pokeArray;
         } else {
             pokeArray = this.shuffleArray(req);

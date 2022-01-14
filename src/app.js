@@ -1,4 +1,3 @@
-// let { port } = require('../config');
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -19,8 +18,10 @@ app.use(
     })
 );
 
-port = process.env.PORT || 80;
+let port = process.env.PORT || 80;
 
-app.listen(port);
+app.listen(port, () => {
+    console.log(`port`, port);
+});
 
 app.use(index);
