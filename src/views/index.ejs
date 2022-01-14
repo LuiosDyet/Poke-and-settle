@@ -16,8 +16,7 @@
 
 <body class="container-fluid">
     <h1 class="text-white text-center  pokemonHollowFont">Poke and settle</h1>
-    <p class="text-white text-center ">Juego para dos jugadores en una pc basado sobre la API de Pokemon</p>
-    <p class="text-white text-center ">Primera versión, mucho por mejorar</p>
+    <p class="text-white text-center ">Juego para dos jugadores en un dispositivo basado sobre la API de Pokemon</p>
     <div class="cards-container">
         <h2 class="text-white text-center  pokemonSolidFont fs-1 mb-3">Jugador <%= currentPlayer %> elige su
             Pokemon
@@ -32,9 +31,9 @@
                         <%= pokemon.name %></h2>
                     <div>
                         <ul class="list-group list-group-flush rounded-1 mb-5">
-                            <li class="list-group-item list-group-item-dark">vida: <%= pokemon.hp %> hp</li>
-                            <li class="list-group-item list-group-item-dark">ataque: <%= pokemon.attack %> dmg</li>
-                            <li class="list-group-item list-group-item-dark">defensa: <%= pokemon.defense %> %</li>
+                            <li class="list-group-item list-group-item-dark">vida: <br><%= pokemon.hp %> hp</li>
+                            <li class="list-group-item list-group-item-dark">ataque: <br><%= pokemon.attack %> dmg</li>
+                            <li class="list-group-item list-group-item-dark">defensa: <br><%= pokemon.defense %> %</li>
                         </ul>
                     </div>
                     <form class="d-flex justify-content-center mb-3" action="/choose/<%= pokemon.id %>" method="post">
