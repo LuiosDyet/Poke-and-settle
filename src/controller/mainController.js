@@ -16,6 +16,10 @@ module.exports = {
             req.session.player1Pokes.length + req.session.player2Pokes.length >=
             6
         ) {
+            req.session.pokeArray = [
+                ...req.session.player1Pokes,
+                ...req.session.player2Pokes,
+            ];
             return res.redirect('/battle');
         }
         res.redirect('back');
@@ -38,16 +42,11 @@ module.exports = {
         });
     },
     fight: (req, res) => {
-        let [player1Pokes, player2Pokes, log] = fight.results(
-            req.body,
-            req.session.player1Pokes,
-            req.session.player2Pokes
-        );
-
-        req.session.player1Pokes = player1Pokes;
-        req.session.player2Pokes = player2Pokes;
-        req.session.log = log;
-        if (player1Pokes.length == 0 || player2Pokes.length == 0) {
+        fight.results(req);
+        if (
+            req.session.player1Pokes.length == 0 ||
+            req.session.player2Pokes.length == 0
+        ) {
             return res.redirect('/endgame');
         } else {
             return res.redirect('back');

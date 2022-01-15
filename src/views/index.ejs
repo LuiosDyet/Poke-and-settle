@@ -15,7 +15,7 @@
 </head>
 
 <body class="container-fluid">
-    <h1 class="text-white text-center  pokemonHollowFont">Poke and settle</h1>
+    <h1 class="text-white text-center pokemonHollowFont mt-3">Poke and settle</h1>
     <p class="text-white text-center ">Juego para dos jugadores en un dispositivo basado sobre la API de Pokemon</p>
     <div class="cards-container">
         <h2 class="text-white text-center  pokemonSolidFont fs-1 mb-3">Jugador <%= currentPlayer %> elige su
@@ -27,7 +27,7 @@
                 <div class="card h-100 justify-content-between p-2 bg-dark bg-gradient text-white ">
                     <img src="<%= `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png` %> "
                         alt="Pokemon image">
-                    <h2 class="text-capitalize  text-center mb-3 fs-2 pokemonHollowFont" style="height: 4rem;">
+                    <h2 class="text-capitalize  text-center mb-3 fs-3 pokemonHollowFont" style="height: 4rem;">
                         <%= pokemon.name %></h2>
                     <div>
                         <ul class="list-group list-group-flush rounded-1 mb-5">

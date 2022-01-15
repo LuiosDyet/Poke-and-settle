@@ -15,7 +15,7 @@
 </head>
 
 <body class="container-fluid max-w-1200">
-    <h1 class="text-white text-center pokemonHollowFont">Poke and settle</h1>
+    <h1 class="text-white text-center pokemonHollowFont mt-3">Poke and settle</h1>
     <form action="/fight" method="post">
         <div class="d-flex justify-content-center">
 
@@ -35,25 +35,30 @@
                     <div class="col-4 card h-100 justify-content-between p-1 m-1 bg-dark bg-gradient text-white">
                         <img src="<%= `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${player1Pokes[i].id}.png` %> "
                             alt="Pokemon image">
-                        <h2 class="text-capitalize text-center fs-2 pokemonHollowFont mb-3" style="height: 4rem;">
+                        <h2 class="text-capitalize text-center fs-3 pokemonHollowFont mb-3" style="height: 4rem;">
                             <%= player1Pokes[i].name %>
                         </h2>
                         <div>
                             <ul class="list-group list-group-flush rounded-1 ">
-                                <li class="list-group-item list-group-item-dark">vida: <%= player1Pokes[i].hp %> hp</li>
-                                <li class="list-group-item list-group-item-dark">ataque: <%= player1Pokes[i].attack %>
-                                    dmg</li>
-                                <li class="list-group-item list-group-item-dark">defensa: <%= player1Pokes[i].defense %>
-                                    %</li>
+                                <li class="list-group-item list-group-item-dark">vida: <br><%= player1Pokes[i].hp %> hp
+                                </li>
+                                <li class="list-group-item list-group-item-dark">ataque:
+                                    <br><%= player1Pokes[i].attack %>
+                                    dmg
+                                </li>
+                                <li class="list-group-item list-group-item-dark">defensa:
+                                    <br><%= player1Pokes[i].defense %>
+                                    %
+                                </li>
                             </ul>
                         </div>
                         <div id="<%= i * 2 %>" class="player1-options">
-                            <input type="text" name="<%= i * 2 %>" value="<%= player1Pokes[i].id %>" class="invisible">
                             <select
                                 class="form-select bg-dark text-white attackingPokemon possibly-hidden hideNext player1-action"
-                                aria-label="Default select" name="<%= i * 2 %>" id="<%= player1Pokes[i].id %>">
+                                aria-label="Default select" name="<%= player1Pokes[i].id %>"
+                                id="<%= player1Pokes[i].id %>">
                                 <option value="" selected disabled>Acción...</option>
-                                <option value="attack">
+                                <option value="attacking">
                                     Atacar</option>
                                 <option value="defend">
                                     Defender
@@ -62,8 +67,8 @@
                                     Evolucionar</option>
                             </select>
                             <select class="form-select bg-dark text-white possibly-hidden" aria-label="Default select"
-                                name="<%= i * 2 %>" id="<%= player1Pokes[i].id %>">
-                                <option value="" selected disabled>a...</option>
+                                name="<%= player1Pokes[i].id %>" id="<%= player1Pokes[i].id %>">
+                                <option value="NA" selected>a...</option>
                                 <% player2Pokes.forEach(enemyPokemon=> { %>
                                 <option value="<%= enemyPokemon.id %>">
                                     <%= enemyPokemon.name %>
@@ -97,7 +102,7 @@
                     <div class="col-4 card h-100 justify-content-between p-1 m-1 bg-dark bg-gradient text-white">
                         <img src="<%= `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${player2Pokes[i].id}.png` %> "
                             alt="Pokemon image">
-                        <h2 class="text-capitalize text-center fs-2 pokemonHollowFont  mb-3" style="height: 4rem;">
+                        <h2 class="text-capitalize text-center fs-3 pokemonHollowFont  mb-3" style="height: 4rem;">
                             <%= player2Pokes[i].name %>
                         </h2>
                         <div>
@@ -106,20 +111,21 @@
                                 </li>
                                 <li class="list-group-item list-group-item-dark">ataque:
                                     <br><%= player2Pokes[i].attack %>
-                                    dmg</li>
+                                    dmg
+                                </li>
                                 <li class="list-group-item list-group-item-dark">defensa:
                                     <br><%= player2Pokes[i].defense %>
-                                    %</li>
+                                    %
+                                </li>
                             </ul>
                         </div>
                         <div id='<%= i * 2 + 1 %>' class="player2-options hidden">
-                            <input type="text" name="<%= i * 2 + 1 %>" value="<%= player2Pokes[i].id %>"
-                                class="invisible">
                             <select
                                 class="form-select bg-dark text-white attackingPokemon possibly-hidden hideNext player2-action"
-                                aria-label="Default select" name="<%= i * 2 + 1 %>" id="<%= player2Pokes[i].id %>">
+                                aria-label="Default select" name="<%= player2Pokes[i].id %>"
+                                id="<%= player2Pokes[i].id %>">
                                 <option value="" selected disabled>Acción...</option>
-                                <option value="attack">
+                                <option value="attacking">
                                     Atacar</option>
                                 <option value="defend">
                                     Defender</option>
@@ -127,8 +133,8 @@
                                 </option>
                             </select>
                             <select class="form-select bg-dark text-white possibly-hidden" aria-label="Default select"
-                                name="<%= i * 2 + 1 %>" id="<%= player2Pokes[i].id %>">
-                                <option value="" selected disabled>a...</option>
+                                name="<%= player2Pokes[i].id %>" id="<%= player2Pokes[i].id %>">
+                                <option value="NA" selected>a...</option>
                                 <% player1Pokes.forEach(enemyPokemon=> { %>
                                 <option value="<%= enemyPokemon.id %>">
                                     <%= enemyPokemon.name %></option>

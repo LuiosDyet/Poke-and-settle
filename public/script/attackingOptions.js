@@ -4,7 +4,7 @@ function attacked() {
 
     for (let attackingPokemon of attackingPokemons) {
         attackingPokemon.addEventListener('change', function () {
-            if (this.value == 'attack') {
+            if (this.value == 'attacking') {
                 this.classList.remove('hideNext');
             } else {
                 this.classList.add('hideNext');
